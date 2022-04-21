@@ -60,44 +60,61 @@ def power_of_n(n, p):
 
 
 # How to find GCD (Greatest Common Divisor) of two numbers using recursion
-def GCD(n1, n2):
-    pass
+def GCD(n1, n2, counter=1, temp_gcd=1):
+    if n1 <= 0 or n2 <= 0 or not isinstance(n1, int) or not isinstance(n2, int):
+        return "Input n is invalid"
+
+    if (min(n1, n2) < counter):
+        return temp_gcd
+    else:
+        if ((n1 / counter) % 1 == 0) and ((n2 / counter) % 1 == 0):
+            return GCD(n1, n2, counter + 1, counter)
+        else:
+            return GCD(n1, n2, counter + 1, temp_gcd)
 
 
 def main():
     # factorial tests
-    assert factorial(5) == 120, "Error"
-    assert factorial(1) == 1, "Error"
-    assert factorial(6) == 720, "Error"
-    assert factorial(-5) == "Input n is invalid", "Error"
-    assert factorial(0.5) == "Input n is invalid", "Error"
+    # assert factorial(5) == 120, "Error"
+    # assert factorial(1) == 1, "Error"
+    # assert factorial(6) == 720, "Error"
+    # assert factorial(-5) == "Input n is invalid", "Error"
+    # assert factorial(0.5) == "Input n is invalid", "Error"
 
     # fibonacci tests
-    assert fibonacci(0) == 0, "Error"
-    assert fibonacci(1) == 1, "Error"
-    assert fibonacci(2) == 1, "Error"
-    assert fibonacci(3) == 2, "Error"
-    assert fibonacci(5) == 5, "Error"
-    assert fibonacci(7) == 13, "Error"
-    assert fibonacci(29.3) == "Input n is invalid", "Error"
-    assert fibonacci(-4) == "Input n is invalid", "Error"
+    # assert fibonacci(0) == 0, "Error"
+    # assert fibonacci(1) == 1, "Error"
+    # assert fibonacci(2) == 1, "Error"
+    # assert fibonacci(3) == 2, "Error"
+    # assert fibonacci(5) == 5, "Error"
+    # assert fibonacci(7) == 13, "Error"
+    # assert fibonacci(29.3) == "Input n is invalid", "Error"
+    # assert fibonacci(-4) == "Input n is invalid", "Error"
 
     # sum of digits test
-    assert sum_of_digits_alternative(945) == 18, "Error"
-    assert sum_of_digits_alternative(5) == 5, "Error"
-    assert sum_of_digits_alternative(729) == 18, "Error"
-    assert sum_of_digits_alternative(729987) == 42, "Error"
-    assert sum_of_digits_alternative(10) == 1, "Error"
-    assert sum_of_digits_alternative(29.3) == "Input n is invalid", "Error"
-    assert sum_of_digits_alternative(-4) == "Input n is invalid", "Error"
+    # assert sum_of_digits_alternative(945) == 18, "Error"
+    # assert sum_of_digits_alternative(5) == 5, "Error"
+    # assert sum_of_digits_alternative(729) == 18, "Error"
+    # assert sum_of_digits_alternative(729987) == 42, "Error"
+    # assert sum_of_digits_alternative(10) == 1, "Error"
+    # assert sum_of_digits_alternative(29.3) == "Input n is invalid", "Error"
+    # assert sum_of_digits_alternative(-4) == "Input n is invalid", "Error"
 
     # power of n tests
-    assert power_of_n(2, 3) == 8, "Error"
-    assert power_of_n(5, 3) == 125, "Error"
-    assert power_of_n(17, 2) == 289, "Error"
-    assert power_of_n(9, 3) == 729, "Error"
-    assert power_of_n(29.3, 1/2) == "Input n is invalid", "Error"
-    assert power_of_n(-4, -4) == "Input n is invalid", "Error"
+    # assert power_of_n(2, 3) == 8, "Error"
+    # assert power_of_n(5, 3) == 125, "Error"
+    # assert power_of_n(17, 2) == 289, "Error"
+    # assert power_of_n(9, 3) == 729, "Error"
+    # assert power_of_n(29.3, 1/2) == "Input n is invalid", "Error"
+    # assert power_of_n(-4, -4) == "Input n is invalid", "Error"
+
+    # GCD tests
+    assert GCD(10, 15) == 5, "Error"
+    assert GCD(55, 77) == 11, "Error"
+    assert GCD(89, 22) == 1, "Error"
+    assert GCD(16, 52) == 4, "Error"
+    assert GCD(16, 0.5) == "Input n is invalid", "Error"
+    assert GCD(16, 0.8) == "Input n is invalid", "Error"
 
 
 if __name__ == "__main__":
