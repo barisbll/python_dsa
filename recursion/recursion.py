@@ -34,8 +34,8 @@ def sum_of_digits(n):
     if n / 10 < 1.0:
         return n
     else:
-        reminder = ((n/10) % 1) * 10
-        return reminder + sum_of_digits(int(n/10))
+        remainder = ((n/10) % 1) * 10
+        return remainder + sum_of_digits(int(n/10))
 
 
 def main():
