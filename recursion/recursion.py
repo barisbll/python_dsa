@@ -60,7 +60,7 @@ def power_of_n(n, p):
 
 
 # How to find GCD (Greatest Common Divisor) of two numbers using recursion
-def GCD(n1, n2, counter=1, temp_gcd=1):
+def gcd(n1, n2, counter=1, temp_gcd=1):
     if n1 <= 0 or n2 <= 0 or not isinstance(n1, int) or not isinstance(n2, int):
         return "Input n is invalid"
 
@@ -68,9 +68,26 @@ def GCD(n1, n2, counter=1, temp_gcd=1):
         return temp_gcd
     else:
         if ((n1 / counter) % 1 == 0) and ((n2 / counter) % 1 == 0):
-            return GCD(n1, n2, counter + 1, counter)
+            return gcd(n1, n2, counter + 1, counter)
         else:
-            return GCD(n1, n2, counter + 1, temp_gcd)
+            return gcd(n1, n2, counter + 1, temp_gcd)
+
+# Find GCD of two numbers using recursion
+
+
+def gcd_euclidian(a, b):
+    if int(a) != a or int(b) != b:
+        return "Input n is invalid"
+
+    if a < 0:
+        a = -1 * a
+    if b < 0:
+        b = -1 * b
+
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a)
 
 
 def main():
@@ -109,12 +126,12 @@ def main():
     # assert power_of_n(-4, -4) == "Input n is invalid", "Error"
 
     # GCD tests
-    assert GCD(10, 15) == 5, "Error"
-    assert GCD(55, 77) == 11, "Error"
-    assert GCD(89, 22) == 1, "Error"
-    assert GCD(16, 52) == 4, "Error"
-    assert GCD(16, 0.5) == "Input n is invalid", "Error"
-    assert GCD(16, 0.8) == "Input n is invalid", "Error"
+    assert gcd_euclidian(10, 15) == 5, "Error"
+    assert gcd_euclidian(55, 77) == 11, "Error"
+    assert gcd_euclidian(89, 22) == 1, "Error"
+    assert gcd_euclidian(-16, 52) == 4, "Error"
+    assert gcd_euclidian(16, 0.5) == "Input n is invalid", "Error"
+    assert gcd_euclidian(16, 0.8) == "Input n is invalid", "Error"
 
 
 if __name__ == "__main__":
